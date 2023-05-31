@@ -8,6 +8,7 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CoreService } from './core/core.service';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,11 @@ export class AppComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _dialog: MatDialog, private _empService: EmployeeService){}
+  constructor(
+    private _dialog: MatDialog, 
+    private _empService: EmployeeService,
+    private _coreService: CoreService
+  ){}
 
   ngOnInit(): void {
     this.getEmployeeList()
@@ -77,7 +82,7 @@ export class AppComponent implements OnInit {
   deleteEmployee(id: number){
     this._empService.deleteEmployee(id).subscribe({
       next: (res) => {
-        alert('Successfully deleted!')
+        this._coreService.openSnackBar("Successfully Deleted", 'done')
         this.getEmployeeList()
       },
       error: (err) => {
@@ -87,8 +92,15 @@ export class AppComponent implements OnInit {
   }
 
   openEditEmpForm(data: any) {
-    this._dialog.open(EmpAddEditComponent, {
+    const dialogRef = this._dialog.open(EmpAddEditComponent, {
       data
+    })
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if(val){
+          this.getEmployeeList()
+        }
+      }
     })
   }
 }

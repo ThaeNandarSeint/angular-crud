@@ -18,7 +18,7 @@
   },
   "employees": [
     {
-      "firstName": "dcsbghnjmk,",
+      "firstName": "thaw",
       "lastName": "cxvnhb,mk",
       "email": "xzvbhnmj",
       "dob": "2023-05-08T17:30:00.000Z",
@@ -40,6 +40,18 @@
       "experience": 55,
       "package": 456,
       "id": 2
+    },
+    {
+      "firstName": "nandar",
+      "lastName": "cxvnhb,mk",
+      "email": "xzvbhnmj",
+      "dob": "2023-05-08T17:30:00.000Z",
+      "gender": "male",
+      "education": "Matric",
+      "company": "xscdbgn",
+      "experience": 55,
+      "package": 56,
+      "id": 3
     }
   ]
 }

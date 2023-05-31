@@ -12,7 +12,7 @@ export class EmployeeService {
   addEmployee(data: any): Observable<any> {
     return this._http.post("http://localhost:3000/employees", data)
   }
-  editEmployee(id: number, data: any): Observable<any> {
+  updateEmployee(id: number, data: any): Observable<any> {
     return this._http.put(`http://localhost:3000/employees/${id}`, data)
   }
   getEmployeeList(): Observable<any> {
