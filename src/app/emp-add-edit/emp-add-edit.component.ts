@@ -49,7 +49,7 @@ export class EmpAddEditComponent implements OnInit {
       if (this.data) {
         this._empService.updateEmployee(this.data.id, this.empForm.value).subscribe({
           next: (val: any) => {
-            alert('Employee updated successfully')
+            this._coreService.openSnackBar("Employee updated successfully", 'done')
             this._dialogRef.close(true)
           },
           error: (err: any) => {
@@ -59,7 +59,7 @@ export class EmpAddEditComponent implements OnInit {
       } else {
         this._empService.addEmployee(this.empForm.value).subscribe({
           next: (val: any) => {
-            alert('Employee created successfully')
+            this._coreService.openSnackBar("Employee created successfully", 'done')
             this._dialogRef.close(true)
           },
           error: (err: any) => {
